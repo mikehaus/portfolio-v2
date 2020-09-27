@@ -7,7 +7,8 @@ const NAVSTYLES = {
         position: 'fixed',
         height: '100vh',
         display: 'flex',
-        left: 0
+        left: 0,
+        alignItems: 'center'
     }
 };
 
@@ -22,20 +23,23 @@ export default class SideNav extends React.Component {
     }
 
     handleSelect = (eventKey) => {
-        this.setState({
-            activeKey: eventKey
-        });
+        //this.setState({
+        //    activeKey: eventKey
+        //});
+        this.props.changeView(eventKey);
     }
 
     render = () => {
         return(
-            <div style={NAVSTYLES.main}>
+            <div style={ NAVSTYLES.main }>
                 <Sidenav 
                     expanded={this.state.expanded}
                     activeKey={this.state.activeKey}
                     onSelect={this.handleSelect}
-                    appearance='subtle'
-                >
+                    appearance='subtle'>
+                    <SideNav.Header>
+
+                    </SideNav.Header>
                     <Sidenav.Body>
                         <Nav>
                             <Nav.Item eventKey='home' icon={<Icon icon='user-info' />}>
@@ -43,6 +47,9 @@ export default class SideNav extends React.Component {
                             </Nav.Item>
                         </Nav>
                     </Sidenav.Body>
+                    <SideNav.Footer>
+                        
+                    </SideNav.Footer>
                 </Sidenav>
             </div>            
         );
