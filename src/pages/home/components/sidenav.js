@@ -1,15 +1,27 @@
 import React from 'react';
-import { Sidenav, Nav, Icon } from 'rsuite';
+import { Sidenav, Nav, Icon, IconButton, ButtonGroup } from 'rsuite';
 
 const NAVSTYLES = {
     main: {
         width: 52,
         position: 'fixed',
-        height: '100vh',
+        height: '95vh',
         display: 'flex',
+        alignItems: 'center',
         left: 0,
-        alignItems: 'center'
-    }
+    },
+    btnContainer: {
+        width: 52,
+        padding: 10,
+    },    
+    homeBtn: {
+        position: 'fixed',
+        top: 10,
+   },
+   socialBtns: {
+       position: 'fixed',
+       bottom: 10
+   }
 };
 
 export default class SideNav extends React.Component {
@@ -31,27 +43,45 @@ export default class SideNav extends React.Component {
 
     render = () => {
         return(
-            <div style={ NAVSTYLES.main }>
-                <Sidenav 
-                    expanded={this.state.expanded}
-                    activeKey={this.state.activeKey}
-                    onSelect={this.handleSelect}
-                    appearance='subtle'>
-                    <SideNav.Header>
-
-                    </SideNav.Header>
-                    <Sidenav.Body>
-                        <Nav>
-                            <Nav.Item eventKey='home' icon={<Icon icon='user-info' />}>
-                                About Mike
-                            </Nav.Item>
-                        </Nav>
-                    </Sidenav.Body>
-                    <SideNav.Footer>
-                        
-                    </SideNav.Footer>
-                </Sidenav>
-            </div>            
+            <div>
+                <div style={ NAVSTYLES.btnContainer }>
+                    <IconButton 
+                        style={ NAVSTYLES.homeBtn }
+                        appearance='ghost'
+                        icon={<Icon icon='home' />} />
+                </div>
+                <div style={ NAVSTYLES.main }>
+                    <Sidenav
+                        expanded={this.state.expanded}
+                        activeKey={this.state.activeKey}
+                        onSelect={this.handleSelect}
+                        appearance='subtle'>
+                        <div>
+                            <Sidenav.Body>
+                                <div style={ NAVSTYLES.mid }>
+                                <Nav>
+                                    <Nav.Item eventKey='about' icon={<Icon icon='user-info' />}>
+                                        About Mike
+                                    </Nav.Item>
+                                </Nav>
+                                </div>
+                            </Sidenav.Body>
+                        </div>
+                    </Sidenav>
+                </div>
+                <div style={ NAVSTYLES.btnContainer }>
+                    <ButtonGroup
+                        vertical='true' 
+                        style={ NAVSTYLES.socialBtns }>
+                        <IconButton
+                            appearance='ghost'
+                            icon={<Icon icon='github' />} />
+                        <IconButton
+                            appearance='ghost'
+                            icon={<Icon icon='linkedin' />} />
+                    </ButtonGroup>
+                </div>
+            </div>         
         );
     }
 }
