@@ -1,26 +1,16 @@
-import React from 'react';
+import React, { createRef } from 'react';
+import { act } from 'react-dom/test-utils';
 import { Sidenav, Nav, Icon, IconButton, ButtonGroup } from 'rsuite';
 
 const NAVSTYLES = {
     main: {
         width: 52,
         position: 'fixed',
-        height: '80vh',
+        height: '90vh',
         display: 'flex',
         alignItems: 'center',
         left: 0,
     },
-    btnContainer: {
-        padding: 10,
-    },    
-    homeBtn: {
-        position: 'fixed',
-        top: 10,
-   },
-   socialBtns: {
-       position: 'fixed',
-       bottom: 10
-   }
 };
 
 export default class SideNav extends React.Component {
@@ -30,24 +20,23 @@ export default class SideNav extends React.Component {
             expanded: false,
             activeKey: props.activeKey
         }
+        this.wrapper = createRef();
+        this.aboutRef = createRef();
+        this.portfolioRef = createRef();
         this.handleSelect = this.handleSelect.bind(this);
     }
 
     handleSelect = (eventKey) => {
         //this.setState({
         //    activeKey: eventKey
-        //});
+        //});]
         this.props.changeView(eventKey);
+        this.setState({ activeKey: eventKey })
     }
 
     render = () => {
         return(
-            <div>
-                <div style={ NAVSTYLES.btnContainer }>
-                    <IconButton 
-                        appearance='ghost'
-                        icon={<Icon icon='home' />} />
-                </div>
+            <div ref={this.wrapper}>
                 <div style={ NAVSTYLES.main }>
                     <Sidenav
                         expanded={this.state.expanded}
@@ -57,28 +46,22 @@ export default class SideNav extends React.Component {
                         <div>
                             <Sidenav.Body>
                                 <Nav>
-                                    <Nav.Item eventKey='about' icon={<Icon icon='user-info' />}>
+                                    <Nav.Item 
+                                        ref={this.aboutRef}
+                                        eventKey='about'
+                                        icon={<Icon icon='user-info' />}>
                                         About Mike
                                     </Nav.Item>
-                                    <Nav.Item eventKey='portfolio' icon={<Icon icon='terminal-line' />}>
+                                    <Nav.Item
+                                        ref={this.portfolioRef}
+                                        eventKey='portfolio'
+                                        icon={<Icon icon='terminal-line' />}>
                                         Projects
                                     </Nav.Item>
                                 </Nav>
                             </Sidenav.Body>
                         </div>
                     </Sidenav>
-                </div>
-                <div style={ NAVSTYLES.btnContainer }>
-                    <ButtonGroup
-                        vertical='true' 
-                        style={ NAVSTYLES.socialBtns }>
-                        <IconButton
-                            appearance='ghost'
-                            icon={<Icon icon='github' />} />
-                        <IconButton
-                            appearance='ghost'
-                            icon={<Icon icon='linkedin' />} />
-                    </ButtonGroup>
                 </div>
             </div>         
         );
