@@ -56,7 +56,6 @@ export default class SideNav extends React.Component {
                         appearance='subtle'>
                         <div>
                             <Sidenav.Body>
-                                <div style={ NAVSTYLES.mid }>
                                 <Nav>
                                     <Nav.Item eventKey='about' icon={<Icon icon='user-info' />}>
                                         About Mike
@@ -65,7 +64,6 @@ export default class SideNav extends React.Component {
                                         Projects
                                     </Nav.Item>
                                 </Nav>
-                                </div>
                             </Sidenav.Body>
                         </div>
                     </Sidenav>
