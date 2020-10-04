@@ -2,7 +2,7 @@ import React from 'react';
 import SideNav from './sidenav';
 import { Container } from 'rsuite';
 
-export default class Home extends React.Component {
+export default class MainContainer extends React.Component {
     constructor() {
         super();
         this.state = {

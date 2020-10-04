@@ -1,12 +1,13 @@
 import React from 'react';
-import Home from './pages/home/components/home';
+import Home from './pages/home/components/maincontainer';
 import './App.css';
 import 'rsuite/dist/styles/rsuite-dark.css'
+import MainContainer from './pages/home/components/maincontainer';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <MainContainer />
     </div>
   );
 }

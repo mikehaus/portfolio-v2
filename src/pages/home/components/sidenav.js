@@ -5,13 +5,12 @@ const NAVSTYLES = {
     main: {
         width: 52,
         position: 'fixed',
-        height: '95vh',
+        height: '80vh',
         display: 'flex',
         alignItems: 'center',
         left: 0,
     },
     btnContainer: {
-        width: 52,
         padding: 10,
     },    
     homeBtn: {
@@ -46,7 +45,6 @@ export default class SideNav extends React.Component {
             <div>
                 <div style={ NAVSTYLES.btnContainer }>
                     <IconButton 
-                        style={ NAVSTYLES.homeBtn }
                         appearance='ghost'
                         icon={<Icon icon='home' />} />
                 </div>
@@ -62,6 +60,9 @@ export default class SideNav extends React.Component {
                                 <Nav>
                                     <Nav.Item eventKey='about' icon={<Icon icon='user-info' />}>
                                         About Mike
+                                    </Nav.Item>
+                                    <Nav.Item eventKey='portfolio' icon={<Icon icon='terminal-line' />}>
+                                        Projects
                                     </Nav.Item>
                                 </Nav>
                                 </div>
